@@ -5,10 +5,15 @@ import {
   validateSignInFormData,
   validateSignUpFormData,
 } from "../utils/formValidation";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [error, setError] = useState(null);
+  const [errorMsg, setErrorMsg] = useState();
 
   // handeling signin/signup toggle
 
@@ -16,7 +21,7 @@ const Login = () => {
     setIsSignUp(!isSignUp);
 
     // to remove input and error field data after toogle
-    setError(null);
+    setErrorMsg(null);
     email.current.value = null;
     password.current.value = null;
   };
@@ -30,20 +35,82 @@ const Login = () => {
   // handeling form validation before submitting
 
   const handleBtnClick = () => {
-    if (isSignUp) {
-      const validateSignUp = validateSignUpFormData(
-        name.current.value,
-        email.current.value,
-        password.current.value
-      );
-      setError(validateSignUp);
-    }
+    //SIGN IN
+
+    const validateSignInMsg = validateSignInFormData(
+      email.current.value,
+      password.current.value
+    );
+
     if (!isSignUp) {
-      const validationSignIn = validateSignInFormData(
-        email.current.value,
-        password.current.value
-      );
-      setError(validationSignIn);
+      setErrorMsg(validateSignInMsg);
+      if (validateSignInMsg) return;
+
+      if (validateSignInMsg === null) {
+        // sign in
+
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            // ...
+            if (user) setErrorMsg("Successfully logged in!!");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMsg(errorCode);
+          });
+      }
+
+      return;
+    }
+
+    //SIGN UP
+    const validateSignUpMsg = validateSignUpFormData(
+      name.current.value,
+      email.current.value,
+      password.current.value
+    );
+
+    if (isSignUp) {
+      setErrorMsg(validateSignUpMsg);
+
+      if (validateSignUpMsg) return;
+
+      if (validateSignInMsg === null) {
+        //Sign up logic
+
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+
+            name.current.value = null;
+            email.current.value = null;
+            password.current.value = null;
+
+            if (user) setErrorMsg("User successfully created!!");
+
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMsg(errorCode);
+            // ..
+          });
+      }
+
+      return;
     }
   };
 
@@ -87,7 +154,7 @@ const Login = () => {
           className="p-3 my-3 bg-slate-800 w-full rounded-md"
         />
         <p className="font-semibold text-red-700 text-medium px-1 my-1">
-          {error}
+          {errorMsg}
         </p>
         <button
           className="bg-red-700 w-full p-3 my-3 rounded-md hover:bg-red-600 font-normal"
@@ -95,7 +162,7 @@ const Login = () => {
         >
           {isSignUp ? "Sign Up" : "Log In"}
         </button>
-        <p className="text-white p-3 my-3 ">
+        <p className="text-white px-1 py-3 my-3 ">
           {isSignUp ? "Already registered? " : "Not registerd? "}
 
           <span
