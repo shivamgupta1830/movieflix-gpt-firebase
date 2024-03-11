@@ -10,10 +10,15 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { removeUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
 
   // handeling signin/signup toggle
 
@@ -47,8 +52,6 @@ const Login = () => {
       if (validateSignInMsg) return;
 
       if (validateSignInMsg === null) {
-        // sign in
-
         signInWithEmailAndPassword(
           auth,
           email.current.value,
@@ -56,9 +59,10 @@ const Login = () => {
         )
           .then((userCredential) => {
             // Signed in
-            const user = userCredential.user;
-            // ...
-            if (user) setErrorMsg("Successfully logged in!!");
+
+            navigate("/browse");
+
+            // user ? navigate("/browse") : navigate("/error");
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -92,21 +96,17 @@ const Login = () => {
         )
           .then((userCredential) => {
             // Signed up
-            const user = userCredential.user;
 
             name.current.value = null;
             email.current.value = null;
             password.current.value = null;
 
-            if (user) setErrorMsg("User successfully created!!");
-
-            // ...
+            navigate("/browse");
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             setErrorMsg(errorCode);
-            // ..
           });
       }
 
