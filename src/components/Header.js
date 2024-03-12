@@ -52,13 +52,13 @@ const Header = () => {
 
       {user && (
         <div className="flex justify-between gap-2 items-center px-6">
-          <p className=" py-1 px-2 rounded-md text-white text-sm font-normal">
+          <p className=" py-1 px-2 rounded-md text-white text-sm font-semibold">
             {user.email}
           </p>
           <img src={avatar} alt="avatar" className="size-9 rounded-sm"></img>
           <button
             onClick={handleSignout}
-            className=" border border-white py-1 px-2 mx-2 rounded-md hover:bg-red-700 hover:border-red-700 text-white text-sm font-normal"
+            className=" border border-white py-1 px-2 mx-2 rounded-md hover:bg-red-700 hover:border-red-700 text-white text-sm font-semibold"
           >
             Sign Out
           </button>

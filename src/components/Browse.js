@@ -1,3 +1,4 @@
+import useGetTrailerVideoID from "../hooks/useGetTrailerVideoID";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import usePopularTvShows from "../hooks/usePopularTvShows";
@@ -15,11 +16,12 @@ const Browse = () => {
   useUpcomingMovies();
   usePopularTvShows();
   useTopRatedTvShows();
+
   return (
     <div>
       <Header />
       <MainContainer />
-      <SecondaryContainer />
+      {/* <SecondaryContainer /> */}
     </div>
   );
 };

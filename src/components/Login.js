@@ -57,12 +57,12 @@ const Login = () => {
           password.current.value
         )
           .then((userCredential) => {
-            const user = userCredential.user;
+            // const user = userCredential.user;
             // Signed in
           })
           .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
+            // const errorMessage = error.message;
             setErrorMsg(errorCode);
           });
       }
@@ -91,7 +91,7 @@ const Login = () => {
           password.current.value
         )
           .then((userCredential) => {
-            const user = userCredential.user;
+            // const user = userCredential.user;
             // Signed up
 
             name.current.value = null;
@@ -100,7 +100,7 @@ const Login = () => {
           })
           .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
+            // const errorMessage = error.message;
 
             setErrorMsg(errorCode);
           });
