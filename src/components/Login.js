@@ -10,15 +10,14 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { removeUser } from "../utils/userSlice";
+
+// import { useSelector } from "react-redux";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
-  const navigate = useNavigate();
-  const user = useSelector((store) => store.user);
+
+  // const user = useSelector((store) => store.user);
 
   // handeling signin/signup toggle
 
@@ -58,11 +57,8 @@ const Login = () => {
           password.current.value
         )
           .then((userCredential) => {
+            const user = userCredential.user;
             // Signed in
-
-            navigate("/browse");
-
-            // user ? navigate("/browse") : navigate("/error");
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -95,17 +91,17 @@ const Login = () => {
           password.current.value
         )
           .then((userCredential) => {
+            const user = userCredential.user;
             // Signed up
 
             name.current.value = null;
             email.current.value = null;
             password.current.value = null;
-
-            navigate("/browse");
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+
             setErrorMsg(errorCode);
           });
       }
