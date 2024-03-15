@@ -33,7 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 350) setBlackBg(true);
+      if (window.scrollY > 150) setBlackBg(true);
       else setBlackBg(false);
     });
 
