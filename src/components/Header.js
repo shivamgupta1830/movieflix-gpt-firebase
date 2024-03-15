@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/netflix-logo.png";
 import avatar from "../assets/Netflix-avatar.png";
 import { auth } from "../utils/firebase";
@@ -11,6 +11,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 
 const Header = () => {
+  const [blackBg, setBlackBg] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //For get user and its details from store
@@ -31,6 +32,11 @@ const Header = () => {
   };
 
   useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 350) setBlackBg(true);
+      else setBlackBg(false);
+    });
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
@@ -44,10 +50,18 @@ const Header = () => {
         navigate("/");
       }
     });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
   }, []);
 
   return (
-    <div className=" w-full absolute bg-gradient-to-b from-black z-20 flex justify-between items-center py-1">
+    <div
+      className={`w-full fixed top-0  z-50 flex justify-between items-center py-1 transition-all bg-gradient-to-b from-black ${
+        blackBg && "bg-black"
+      }`}
+    >
       <img src={logo} alt="logo" className="w-[12%] px-4 pt-2 "></img>
 
       {user && (

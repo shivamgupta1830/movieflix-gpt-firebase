@@ -8,18 +8,19 @@ const SecondaryContainer = () => {
 
   return (
     <div className="bg-black ">
-      <div className="-mt-64 flex flex-col justify-center relative z-50 p-14">
-        <MovieLists title={"Popular Movies"} movies={movies.popularMovies} />
-        <MovieLists title={"Now Playing"} movies={movies.nowPlayingMovies} />
-        <MovieLists title={"Top Rated"} movies={movies.topRatedMovies} />
-        <MovieLists title={"Upcoming"} movies={movies.upcomingMovies} />
+      <div className="-mt-64 relative z-20 p-14">
+        <MovieLists title={"Popular Movies"} movies={movies?.popularMovies} />
         <MovieLists
           title={"Popular TV Shows"}
-          movies={tvShows.popularTvShows}
+          movies={tvShows?.popularTvShows}
         />
+        <MovieLists title={"Now Playing"} movies={movies?.nowPlayingMovies} />
+        <MovieLists title={"Top Rated"} movies={movies?.topRatedMovies} />
+        <MovieLists title={"Upcoming"} movies={movies?.upcomingMovies} />
+
         <MovieLists
           title={"Top Rated TV Shows"}
-          movies={tvShows.topRatedTvShows}
+          movies={tvShows?.topRatedTvShows}
         />
       </div>
     </div>

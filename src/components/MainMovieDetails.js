@@ -2,9 +2,9 @@ import React from "react";
 
 const MainMovieDetails = ({ title, details }) => {
   return (
-    <div className="  aspect-video flex flex-col justify-start gap-4 pt-60 px-16 absolute  text-white bg-gradient-to-r from-black ">
-      <h1 className="text-5xl font-bold">{title}</h1>
-      <p className="w-[28%]">{details}</p>
+    <div className="  aspect-video flex flex-col justify-start gap-4 pt-56 px-16 absolute  text-white bg-gradient-to-r from-black ">
+      <h1 className="text-4xl font-bold">{title}</h1>
+      <p className="w-[30%]">{details.slice(0, 250) + "..."}</p>
       <div>
         <button className="px-9 py-2 text-black bg-slate-100 hover:bg-slate-200 opacity-95 rounded-sm mr-2 text-lg font-semibold ">
           ▷ Play
