@@ -8,7 +8,6 @@ const MainMovieVideo = ({ movieID }) => {
 
   const trailerID = useSelector((store) => store.movies?.moviesTrailerID);
   if (trailerID === null) return;
-  // console.log(trailerID);
 
   return (
     <div>

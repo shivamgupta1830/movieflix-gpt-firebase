@@ -17,6 +17,9 @@ const Header = () => {
   const dispatch = useDispatch();
   //For get user and its details from store
   const user = useSelector((store) => store.user);
+  const gptSearch = useSelector(
+    (store) => store.gptSearchFunction?.showGptSearch
+  );
 
   const handleGptSearch = () => {
     dispatch(toggleGptSearch());
@@ -75,7 +78,7 @@ const Header = () => {
             onClick={handleGptSearch}
             className="py-2 px-4 mx-2 rounded-md bg-violet-700 hover:bg-violet-600 text-white text-sm font-semibold"
           >
-            GPT Search
+            {gptSearch ? "Home Page" : "GPT Search"}
           </button>
           <p className=" py-1 px-2 rounded-md text-white text-sm font-semibold">
             {user.email}

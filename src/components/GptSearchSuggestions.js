@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieLists from "./MovieLists";
+import background from "../assets/netflix-background.jpg";
 
 const GptSearchSuggestions = () => {
   const { gptSearchResults, tmdbSearchResults } = useSelector(
@@ -9,14 +10,27 @@ const GptSearchSuggestions = () => {
   if (!gptSearchResults || !tmdbSearchResults) return;
 
   return (
-    <div className=" max-w-[90%] mx-auto  bg-black p-4  gap-2 rounded-md bg-opacity-95">
-      {gptSearchResults.map((movie, index) => (
-        <MovieLists
-          key={movie}
-          title={movie}
-          movies={tmdbSearchResults[index]}
-        />
-      ))}
+    <div>
+      {tmdbSearchResults && (
+        <div>
+          <div className="-z-50 absolute top-[118vh]">
+            <img src={background} alt="background"></img>
+          </div>
+          <div className="-z-50 absolute top-[236vh]">
+            <img src={background} alt="background"></img>
+          </div>
+        </div>
+      )}
+
+      <div className=" max-w-[90%] mx-auto  bg-black p-4  gap-2 rounded-md bg-opacity-90">
+        {gptSearchResults.map((movie, index) => (
+          <MovieLists
+            key={movie}
+            title={movie}
+            movies={tmdbSearchResults[index]}
+          />
+        ))}
+      </div>
     </div>
   );
 };

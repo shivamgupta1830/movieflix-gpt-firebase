@@ -1,4 +1,3 @@
-// import useGetTrailerVideoID from "../hooks/useGetTrailerVideoID";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import usePopularTvShows from "../hooks/usePopularTvShows";
