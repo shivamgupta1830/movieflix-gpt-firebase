@@ -113,17 +113,21 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="relative">
-        <img src={background} alt="background"></img>
+      <div className="fixed">
+        <img
+          src={background}
+          alt="background"
+          className="h-screen w-screen object-cover"
+        ></img>
       </div>
       <form
-        className=" w-[28%] text-center bg-black bg-opacity-90 absolute top-20 mx-auto right-0 left-0 px-12 py-8  flex flex-col justify-start items-start rounded-md text-white"
+        className=" sm:w-[80%] md:w-[60%] lg:w-[30%] text-center bg-black bg-opacity-90 absolute top-24 mx-auto  right-0 left-0 px-12 py-8  flex flex-col justify-start items-start rounded-md text-white"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
         <h2
-          className="text-white font-bold text-3xl my-3"
+          className="text-white font-bold lg:text-3xl sm:text-xl my-3"
           onSubmit={(e) => e.preventDefault()}
         >
           {isSignUp ? "Sign Up" : "Log In"}
@@ -134,31 +138,31 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="p-3 my-3 w-full bg-slate-800 rounded-md"
+            className="p-3 my-3 w-full bg-slate-800 rounded-md lg:placeholder:text-base sm:placeholder:text-sm"
           />
         )}
         <input
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-3 my-3 w-full bg-slate-800 rounded-md"
+          className="p-3 my-3 w-full bg-slate-800 rounded-md lg:placeholder:text-base sm:placeholder:text-sm"
         />
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-3 my-3 bg-slate-800 w-full rounded-md"
+          className="p-3 my-3 bg-slate-800 w-full rounded-md lg:placeholder:text-base sm:placeholder:text-sm"
         />
         <p className="font-semibold text-red-700 text-medium px-1 my-1">
           {errorMsg}
         </p>
         <button
-          className="bg-red-700 w-full p-3 my-3 rounded-md hover:bg-red-600 font-normal"
+          className="bg-red-700 w-full p-3 my-3 rounded-md hover:bg-red-600 font-normal text-base"
           onClick={handleBtnClick}
         >
           {isSignUp ? "Sign Up" : "Log In"}
         </button>
-        <p className="text-white px-1 py-3 my-3 ">
+        <p className="text-white px-1 py-3 my-3 lg:text-base sm:text-sm">
           {isSignUp ? "Already registered? " : "Not registerd? "}
 
           <span

@@ -10,7 +10,7 @@ const MainMovieVideo = ({ movieID }) => {
   if (trailerID === null) return;
 
   return (
-    <div>
+    <div className="sm:bg-black md:bg-transparent lg:bg-transparent sm:pt-24 md:pt-0">
       <iframe
         className="w-full aspect-video "
         src={`https://www.youtube.com/embed/${trailerID}?autoplay=1&mute=1`}

@@ -6,8 +6,12 @@ import GptSearchSuggestions from "./GptSearchSuggestions";
 const GptSearchComponent = () => {
   return (
     <div>
-      <div className="-z-50 absolute">
-        <img src={background} alt="background"></img>
+      <div className="-z-50 fixed">
+        <img
+          src={background}
+          className="h-screen w-screen object-cover"
+          alt="background"
+        ></img>
       </div>
 
       <GptSearchBar />

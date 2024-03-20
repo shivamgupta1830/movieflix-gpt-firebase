@@ -11,18 +11,18 @@ const GptSearchSuggestions = () => {
 
   return (
     <div>
-      {tmdbSearchResults && (
+      {/* {tmdbSearchResults && (
         <div>
-          <div className="-z-50 absolute top-[118vh]">
+          <div className="-z-50 absolute top-[118%]">
             <img src={background} alt="background"></img>
           </div>
-          <div className="-z-50 absolute top-[236vh]">
+          <div className="-z-50 absolute top-[236%]">
             <img src={background} alt="background"></img>
           </div>
         </div>
-      )}
+      )} */}
 
-      <div className=" max-w-[90%] mx-auto  bg-black p-4  gap-2 rounded-md bg-opacity-90">
+      <div className=" max-w-[90%] mx-auto  bg-black p-4  gap-2 rounded-md bg-opacity-90 my-6">
         {gptSearchResults.map((movie, index) => (
           <MovieLists
             key={movie}

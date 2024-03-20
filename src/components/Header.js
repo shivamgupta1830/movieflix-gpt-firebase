@@ -41,7 +41,7 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 150) setBlackBg(true);
+      if (window.scrollY > 75) setBlackBg(true);
       else setBlackBg(false);
     });
 
@@ -66,27 +66,35 @@ const Header = () => {
 
   return (
     <div
-      className={`w-full fixed top-0  z-50 flex justify-between items-center py-1 transition-all bg-gradient-to-b from-black ${
+      className={`w-screen  fixed top-0  z-50  lg:py-2 md:py-2 sm:pb-3 lg:flex lg:flex-row lg:justify-between   md:flex  md:flex-row md:justify-between sm:flex sm:flex-col sm:justify-between sm:items-center sm:gap-1 transition-all bg-gradient-to-b from-black ${
         blackBg && "bg-black"
       }`}
     >
-      <img src={logo} alt="logo" className="w-[12%] px-4 pt-2 "></img>
+      <img
+        src={logo}
+        alt="logo"
+        className="sm:w-[136px]  md:w-[148px] lg:w-[172px] px-4 pt-2"
+      ></img>
 
       {user && (
-        <div className="flex justify-between gap-2 items-center px-6">
+        <div className="flex justify-between gap-2 items-center px-6 sm:justify-center">
           <button
             onClick={handleGptSearch}
-            className="py-2 px-4 mx-2 rounded-md bg-violet-700 hover:bg-violet-600 text-white text-sm font-semibold"
+            className="py-1 px-2 mx-2 rounded-md bg-violet-700 border border-violet-700 hover:bg-violet-600 text-white text-sm sm:text-xs  lg:text-base font-semibold"
           >
             {gptSearch ? "Home Page" : "GPT Search"}
           </button>
-          <p className=" py-1 px-2 rounded-md text-white text-sm font-semibold">
+          <p className=" py-1 px-2 rounded-md text-white text-sm lg:text-base font-semibold md:hidden sm:hidden lg:inline-block">
             {user.email}
           </p>
-          <img src={avatar} alt="avatar" className="size-9 rounded-sm"></img>
+          <img
+            src={avatar}
+            alt="avatar"
+            className=" lg:size-9 md:size-7  rounded-sm md:inline-block sm:hidden lg:inline-block"
+          ></img>
           <button
             onClick={handleSignout}
-            className=" border border-white py-1 px-2 mx-2 rounded-md hover:bg-red-700 hover:border-red-700 text-white text-sm font-semibold"
+            className=" border border-white py-1 px-2 mx-2 rounded-md hover:bg-red-700 hover:border-red-700 text-white text-sm sm:text-xs lg:text-base  font-semibold"
           >
             Sign Out
           </button>
