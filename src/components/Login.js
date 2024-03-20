@@ -11,13 +11,9 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
-// import { useSelector } from "react-redux";
-
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
-
-  // const user = useSelector((store) => store.user);
 
   // handeling signin/signup toggle
 
@@ -162,11 +158,11 @@ const Login = () => {
         >
           {isSignUp ? "Sign Up" : "Log In"}
         </button>
-        <p className="text-white px-1 py-3 my-3 lg:text-base sm:text-sm">
+        <p className="text-white px-1 py-3 my-3 lg:text-base sm:text-sm ">
           {isSignUp ? "Already registered? " : "Not registerd? "}
 
           <span
-            className="cursor-pointer hover:underline"
+            className="cursor-pointer hover:underline text-red-700 font-semibold"
             onClick={signInHandle}
           >
             {isSignUp ? "Log In" : "Sign Up Now"}
