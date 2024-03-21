@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/netflix-logo.png";
-import avatar from "../assets/Netflix-avatar.png";
+import logo from "../assets/logo.png";
+import avatar from "../assets/avatar.png";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";

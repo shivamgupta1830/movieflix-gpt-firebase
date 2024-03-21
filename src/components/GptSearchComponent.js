@@ -1,5 +1,5 @@
 import React from "react";
-import background from "../assets/netflix-background.jpg";
+import background from "../assets/background.jpg";
 import GptSearchBar from "./GptSearchBar";
 import GptSearchSuggestions from "./GptSearchSuggestions";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieLists from "./MovieLists";
-import background from "../assets/netflix-background.jpg";
+import background from "../assets/background.jpg";
 
 const GptSearchSuggestions = () => {
   const { gptSearchResults, tmdbSearchResults } = useSelector(

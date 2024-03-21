@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import background from "../assets/netflix-background.jpg";
+import background from "../assets/background.jpg";
 import {
   validateSignInFormData,
   validateSignUpFormData,
@@ -149,6 +149,10 @@ const Login = () => {
           placeholder="Password"
           className="p-3 my-3 bg-slate-800 w-full rounded-md lg:placeholder:text-base sm:placeholder:text-sm"
         />
+        <p className="w-full text-sm text-left text-slate-400">
+          Password must have atleast 6 characters including a uppercase,
+          lowercase, numeric & special character
+        </p>
         <p className="font-semibold text-red-700 text-medium px-1 my-1">
           {errorMsg}
         </p>
