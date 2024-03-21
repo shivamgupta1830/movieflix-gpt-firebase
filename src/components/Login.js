@@ -117,7 +117,7 @@ const Login = () => {
         ></img>
       </div>
       <form
-        className=" sm:w-[80%] md:w-[60%] lg:w-[30%] text-center bg-black bg-opacity-90 absolute top-24 mx-auto  right-0 left-0 px-12 py-8  flex flex-col justify-start items-start rounded-md text-white"
+        className=" sm:w-[80%] md:w-[60%] lg:w-[30%] text-center bg-black bg-opacity-90 absolute top-20 mx-auto  right-0 left-0 px-12  py-6  flex flex-col justify-start items-start rounded-md text-white"
         onSubmit={(e) => {
           e.preventDefault();
         }}
